@@ -1,0 +1,38 @@
+############################################################
+# Launcher for Wordpress container for the eBioKit
+# This is a template, the following values must be replaced:
+#   - $${INSTANCE_NAME}, name for the instance
+#   - $${INSTANCE_PORT_1}, port number for STATegraEMS instance
+#   - $${MYSQL_ROOT_PASSWORD}, password for the mysql server
+############################################################
+
+version: '2'
+services:
+
+    $${INSTANCE_NAME}-wordpress:
+      image: wordpress
+      container_name: $${INSTANCE_NAME}-wordpress
+      environment:
+        - WORDPRESS_DB_PASSWORD=$${MYSQL_ROOT_PASSWORD}
+      links:
+        - $${INSTANCE_NAME}-mysql:mysql
+      depends_on:
+        - $${INSTANCE_NAME}-mysql
+      ports:
+        - "$${INSTANCE_PORT_1}:80"
+
+    $${INSTANCE_NAME}-mysql:
+      image: mysql:5.7
+      container_name: $${INSTANCE_NAME}-mysql
+      environment:
+        - MYSQL_ROOT_PASSWORD=$${MYSQL_ROOT_PASSWORD}
+      depends_on:
+        - $${INSTANCE_NAME}-data
+      volumes_from:
+        - $${INSTANCE_NAME}-data
+
+    $${INSTANCE_NAME}-data:
+      image: busybox
+      container_name: $${INSTANCE_NAME}-data
+      volumes:
+        - /data/$${INSTANCE_NAME}-data/mysql:/var/lib/mysql
