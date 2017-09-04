@@ -1,13 +1,13 @@
-Wordpress docker
+WordPress docker
 ===================
 
 This docker image is part of the eBioKit 2017 project.
 
 This docker image extends and distributes the following software:
 
-#### Wordpress
+#### WordPress
 
-- Based on [Wordpress project](https://wordpress.org/).
+- Based on [WordPress project](https://wordpress.org/).
 
 ## Running the Container
 

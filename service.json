@@ -1,9 +1,9 @@
 {
 	"service":"wordpress",
-	"version":"0.1",
-	"title":"Wordpress",
+	"version":"1.0",
+	"title":"WordPress",
 	"description":"The WordPress rich content management system can utilize plugins, widgets, and themes.",
 	"categories":"website manager,web-based",
 	"website":"https://wordpress.org/showcase/",
-	"dockers" : "wordpress,mysql:5.7"
+	"dockers" : "wordpress,mysql:5.7,busybox"
 }
